@@ -1,0 +1,30 @@
+.Power {
+  position: relative;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  grid-row: 4 / 6;
+  grid-column: 2 / 3;
+}
+
+.Power h2 {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 0;
+  left: 2%;
+  transform: translateY(-55%);
+  background-color: #fff;
+  padding: 2px;
+}
+
+.Power h3 {
+  font-size: 6rem;
+}
+
+.Power span {
+  font-size: 3rem;
+}

@@ -1,0 +1,31 @@
+.Wallet {
+  position: relative;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  grid-row: 4 / 6;
+  grid-column: 3 / 4;
+}
+
+.Wallet h2 {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 0;
+  left: 2%;
+  transform: translateY(-55%);
+  background-color: #fff;
+  padding: 2px;
+}
+
+.Wallet h3 {
+  font-size: 6rem;
+}
+
+.Wallet div {
+  display: flex;
+  font-size: 2rem;
+}
