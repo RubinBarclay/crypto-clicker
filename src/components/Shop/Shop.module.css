@@ -1,0 +1,28 @@
+.Shop {
+  position: relative;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  /* 3 below are different from other menus */
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 2rem;
+
+  grid-row: 4 / 6;
+  grid-column: 4 / 5;
+}
+
+.Shop h2 {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 0;
+  left: 2%;
+  transform: translateY(-55%);
+  background-color: #fff;
+  padding: 2px;
+}
+
+.Shop div {
+  overflow: auto;
+}

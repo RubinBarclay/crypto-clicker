@@ -1,0 +1,24 @@
+.Listing {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin: 0.5rem;
+}
+
+.Listing div {
+  font-size: 1.6rem;
+}
+
+.Listing span {
+  margin-left: auto;
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+.Listing button {
+  font-family: inherit;
+  border: 1px solid black;
+  border-radius: 100px;
+  padding: 1rem 2rem;
+}
