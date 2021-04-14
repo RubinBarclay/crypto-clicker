@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import classes from './Wallet.module.css';
-import { round } from '../../utilities/round';
 
 const Wallet = () => {
   const { value, bitcoin } = useSelector(state => ({

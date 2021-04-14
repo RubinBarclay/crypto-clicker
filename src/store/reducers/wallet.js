@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/actionTypes';
-import { round } from '../../utilities/round';
 import Big from 'big.js';
 
 const initialState = {
