@@ -1,30 +1,21 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchListings } from '../../store/actions/WalletActions';
+import { useSelector } from 'react-redux';
 import classes from './Wallet.module.css';
+import { round } from '../../utilities/round';
 
 const Wallet = () => {
-  const { value, data, error, bitcoin } = useSelector(state => ({
+  const { value, bitcoin } = useSelector(state => ({
     value: state.wallet.value,
-    bitcoin: state.wallet.bitcoin,
-    data: state.wallet.data,
-    error: state.wallet.error
+    bitcoin: state.wallet.coins.BTC,
   }));
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchListings());
-  }, []);
 
   return (
     <div className={classes.Wallet}>
       <h2>Wallet</h2>
-      <h3>${value}</h3>
+        <h3>${value.toFixed(5)}</h3>
       <div> 
-        <span>BTC: {bitcoin}</span>
+        <span>BTC: {bitcoin.toFixed(8)}</span>
       </div>
-      <button onClick={() => dispatch({ type: "INC" })}>INC</button>
     </div>
   )
 }

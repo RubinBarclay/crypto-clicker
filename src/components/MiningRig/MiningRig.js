@@ -1,14 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import rig from '../../assets/images/level1.png';
+import * as actionTypes from '../../store/actions/actionTypes';
 import classes from './MiningRig.module.css';
 
-const miningRig = (props) => {
+const MiningRig = () => {
+  const dispatch = useDispatch();
   return (
     <img
-      src={`/images/level${props.level}.png`}
+      src={rig}
       alt="mining rig"
-      className={classes.MiningRig}
-      onClick={props.clicked} />
+      className={classes.MiningRig} 
+      onClick={() => dispatch({ type: actionTypes.ACTIVE_MINING })} />
   )
 };
 
-export default miningRig;
+export default MiningRig;
