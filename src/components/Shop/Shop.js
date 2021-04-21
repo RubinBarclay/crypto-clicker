@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Shop.module.css';
-import Listing from './Listing/Listing';
+// import Listing from './Listing/Listing';
 
 const Shop = () => {
   /*

@@ -4,7 +4,7 @@ import Power from './components/Power/Power';
 import Shop from './components/Shop/Shop';
 import Wallet from './components/Wallet/Wallet';
 import { useDispatch } from 'react-redux';
-import { fetchListings } from './store/actions/asyncActions';
+import { fetchListings, electricityBill } from './store/actions/actionCreators';
 import * as actionTypes from './store/actions/actionTypes';
 import './App.css';
 
@@ -14,10 +14,21 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchListings());
-    const intervalID = setInterval(() => {
+
+    let billTimer = 0;
+    setInterval(() => {
+      // Passive mining
       dispatch({ type: actionTypes.PASSIVE_MINING });
+
+      // Electicity bill mechanism
+      if (billTimer === 10) {
+        dispatch(electricityBill()); // Cost is accessed within actionCreator
+        billTimer = 0;
+      } else {
+        billTimer++;
+      }
     }, 1000);
-  }, []);
+  });
 
   return (
     <div className="App">

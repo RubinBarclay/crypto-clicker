@@ -12,16 +12,10 @@ const initialState = {
 const walletReducer = (state = initialState, action) => {
 
   const updateValue = (rate) => {
-
-    console.log(state.coins.BTC.plus(rate / 100000000).times(state.price.BTC));
-
     return state.coins.BTC.plus(rate / 100000000).times(state.price.BTC);
   }
 
   const updateCoin = (coin, rate) => {
-    
-    console.log(coin.plus(rate / 100000000));
-
     return coin.plus(rate / 100000000);
   }
 
@@ -46,12 +40,21 @@ const walletReducer = (state = initialState, action) => {
         },
         price: { ...state.price },
       }
+    case actionTypes.ELECTRICITY_BILL:
+      return {
+        ...state,
+        value: state.value.minus(action.cost),
+        coins: { 
+          ...state,
+          BTC: state.coins.BTC.minus(action.cost.div(state.price.BTC))
+        },
+        price: { ...state.price }
+      }
     case actionTypes.FETCH_LISTINGS_SUCCESS:
       return { 
         ...state, 
         coins: { ...state.coins },
         price: {
-          ...state.price,
           BTC: action.payload.bitcoin.usd,
           ETH: action.payload.ethereum.usd,
           LTC: action.payload.litecoin.usd,
@@ -64,7 +67,17 @@ const walletReducer = (state = initialState, action) => {
     case actionTypes.FETCH_LISTINGS_FAIL:
       return { 
         ...state, 
-        error: action.payload 
+        coins: { ...state.coins },
+        price: { // Backup prices
+          BTC: 65000,
+          ETH: 2500,
+          LTC: 300,
+          DOGE: 0.15,
+          BCH: 800,
+          ADA: 1.5,
+          XMR: 350,
+        },
+        error: action.payload
       };
     default:
       return state;
