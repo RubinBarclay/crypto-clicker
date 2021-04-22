@@ -1,11 +1,16 @@
 import React from 'react';
+import Listing from './Listing/Listing';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionTypes';
 import classes from './Shop.module.css';
-// import Listing from './Listing/Listing';
 
 const Shop = () => {
-  /*
-  let activeListings = props.items.filter(listing => (
-      listing.price <= props.funds
+
+  const { value, items } = useSelector(state => ({ value: state.wallet.value, items: state.wallet.items }));
+  const dispatch = useDispatch();
+
+  const activeListings = items.filter(listing => (
+      listing.price <= value
     )).map(listing => {
       return (
         <Listing
@@ -13,15 +18,18 @@ const Shop = () => {
           name={listing.name}
           desc={listing.desc}
           price={listing.price}
-          purchase={() => props.purchase(listing)} />
+          purchase={() => {
+            dispatch({ type: actionTypes.BUY_ITEM, key: listing.key, price: listing.price, buffs: listing.buffs }) 
+            dispatch({ type: actionTypes.UPDATE_POWER_STATS, rate: listing.rate, watts: listing.watts }) 
+          }}
+          />
         )
       });
-  */
 
   return (
     <div className={classes.Shop}>
       <h2>Shop</h2>
-      <div></div>
+      <div>{activeListings}</div>
     </div>
   )
 }

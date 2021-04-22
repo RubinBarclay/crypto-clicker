@@ -1,22 +1,26 @@
-import * as actionTypes from '../actions/actionTypes';
 import Big from 'big.js';
+import * as actionTypes from '../actions/actionTypes';
+import items from '../../items';
 
 const initialState = {
   value: new Big(0),
-  activeRate: 5,     // 10%
-  passiveRate: 1,     // 2%
+  activeRate: new Big(5),
+  passiveRate: new Big(1),
   coins: { BTC: new Big(0) },
-  price: {}
+  price: {},
+  items: [ ...items ]
 };
 
 const walletReducer = (state = initialState, action) => {
 
   const updateValue = (rate) => {
-    return state.coins.BTC.plus(rate / 100000000).times(state.price.BTC);
+    const newCoins = rate.div(100000000); // works only for BTC atm
+    return state.coins.BTC.plus(newCoins).times(state.price.BTC);
   }
 
   const updateCoin = (coin, rate) => {
-    return coin.plus(rate / 100000000);
+    const newCoins = rate.div(100000000); // works only for BTC atm
+    return coin.plus(newCoins);
   }
 
   switch (action.type) {
@@ -29,6 +33,7 @@ const walletReducer = (state = initialState, action) => {
           BTC: updateCoin(state.coins.BTC, state.activeRate),
         },
         price: { ...state.price },
+        items: [ ...state.items ]
       };
     case actionTypes.PASSIVE_MINING:
       return {
@@ -39,6 +44,7 @@ const walletReducer = (state = initialState, action) => {
           BTC: updateCoin(state.coins.BTC, state.passiveRate),
         },
         price: { ...state.price },
+        items: [ ...state.items ]
       }
     case actionTypes.ELECTRICITY_BILL:
       return {
@@ -48,7 +54,20 @@ const walletReducer = (state = initialState, action) => {
           ...state,
           BTC: state.coins.BTC.minus(action.cost.div(state.price.BTC))
         },
-        price: { ...state.price }
+        price: { ...state.price },
+        items: [ ...state.items ]
+      }
+    case actionTypes.BUY_ITEM:
+      return {
+        value: state.value.minus(action.price),
+        activeRate: state.activeRate.times(action.buffs.active),
+        passiveRate: state.passiveRate.times(action.buffs.passive),
+        coins: { 
+          ...state.coins,
+          BTC: state.coins.BTC.minus(action.price / state.price.BTC)
+        },
+        price: { ...state.price },
+        items: state.items.filter(item => item.key !== action.key)
       }
     case actionTypes.FETCH_LISTINGS_SUCCESS:
       return { 
@@ -59,10 +78,11 @@ const walletReducer = (state = initialState, action) => {
           ETH: action.payload.ethereum.usd,
           LTC: action.payload.litecoin.usd,
           DOGE: action.payload.dogecoin.usd,
-          BCH: action.payload.["bitcoin-cash"].usd,
+          BCH: action.payload["bitcoin-cash"].usd,
           ADA: action.payload.cardano.usd,
           XMR: action.payload.monero.usd,
-        }
+        },
+        items: [ ...state.items ]
       };
     case actionTypes.FETCH_LISTINGS_FAIL:
       return { 
@@ -77,6 +97,7 @@ const walletReducer = (state = initialState, action) => {
           ADA: 1.5,
           XMR: 350,
         },
+        items: [ ...state.items ],
         error: action.payload
       };
     default:

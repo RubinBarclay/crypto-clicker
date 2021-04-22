@@ -14,15 +14,11 @@ const powerReducer = (state = initialState, action) => {
         ...state,
         cost: new Big(state.watts / 1000).times(state.rate)
       }
-    case actionTypes.UPDATE_POWER_RATE:
+    case actionTypes.UPDATE_POWER_STATS:
       return {
         ...state,
-        rate: action.rate
-      }
-    case actionTypes.UPDATE_POWER_WATTS:
-      return {
-        ...state,
-        watts: action.watts
+        rate: action.rate ? action.rate : state.rate,
+        watts: action.watts ? action.watts : state.watts
       }
     default:
       return state;

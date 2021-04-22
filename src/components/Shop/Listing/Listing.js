@@ -1,15 +1,15 @@
 import React from 'react';
 import classes from './Listing.module.css';
 
-const Listing = () => {
+const Listing = (props) => {
   return (
     <div className={classes.Listing}>
       <div>
-        <h3></h3>
-        <p></p>
+        <h3>{props.name}</h3>
+        <p>{props.desc}</p>
       </div>
-      <span></span>
-      <button>Buy</button>
+      <span>${props.price}</span>
+      <button onClick={props.purchase}>Buy</button>
     </div>
   )
 }
