@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 import items from '../../items';
 
 const initialState = {
+  level: 1,
   value: new Big(0),
   activeRate: new Big(5),
   passiveRate: new Big(1),
@@ -59,6 +60,7 @@ const walletReducer = (state = initialState, action) => {
       }
     case actionTypes.BUY_ITEM:
       return {
+        level: action.level ? action.level : state.level,
         value: state.value.minus(action.price),
         activeRate: state.activeRate.times(action.buffs.active),
         passiveRate: state.passiveRate.times(action.buffs.passive),

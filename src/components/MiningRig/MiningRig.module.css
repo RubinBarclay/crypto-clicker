@@ -5,3 +5,8 @@
   height: 250px;
   justify-self: center;
 }
+
+.coins {
+  height: 2rem;
+  width: 2rem;
+}

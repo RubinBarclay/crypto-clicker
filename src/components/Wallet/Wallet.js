@@ -8,12 +8,17 @@ const Wallet = () => {
     bitcoin: state.wallet.coins.BTC,
   }));
 
+  const decimalCount = {
+    value: value.lt(100) ? 5 : 2,
+    BTC: bitcoin.lt(100) ? 8 : bitcoin.lt(10000) ? 4 : 2,
+  }
+
   return (
     <div className={classes.Wallet}>
       <h2>Wallet</h2>
-        <h3>${value.toFixed(5)}</h3>
+        <h3>${value.toFixed(decimalCount.value)}</h3>
       <div> 
-        <span>BTC: {bitcoin.toFixed(8)}</span>
+        <span>BTC: {bitcoin.toFixed(decimalCount.BTC)}</span>
       </div>
     </div>
   )

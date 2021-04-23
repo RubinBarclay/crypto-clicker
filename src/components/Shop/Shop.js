@@ -19,7 +19,7 @@ const Shop = () => {
           desc={listing.desc}
           price={listing.price}
           purchase={() => {
-            dispatch({ type: actionTypes.BUY_ITEM, key: listing.key, price: listing.price, buffs: listing.buffs }) 
+            dispatch({ type: actionTypes.BUY_ITEM, key: listing.key, price: listing.price, buffs: listing.buffs, level: listing.level }) 
             dispatch({ type: actionTypes.UPDATE_POWER_STATS, rate: listing.rate, watts: listing.watts }) 
           }}
           />
