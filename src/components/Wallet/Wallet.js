@@ -1,4 +1,5 @@
 import React from 'react';
+import Notification from './Notification/Notification';
 import { useSelector } from 'react-redux';
 import classes from './Wallet.module.css';
 
@@ -17,6 +18,7 @@ const Wallet = () => {
     <div className={classes.Wallet}>
       <h2>Wallet</h2>
         <h3>${value.toFixed(decimalCount.value)}</h3>
+        <Notification />
       <div> 
         <span>BTC: {bitcoin.toFixed(decimalCount.BTC)}</span>
       </div>

@@ -4,6 +4,7 @@ import items from '../../items';
 
 const initialState = {
   level: 1,
+  gains: null,
   value: new Big(0),
   activeRate: new Big(5),
   passiveRate: new Big(1),
@@ -13,6 +14,10 @@ const initialState = {
 };
 
 const walletReducer = (state = initialState, action) => {
+
+  const updateGains = (rate) => {
+    return rate.div(100000000).times(state.price.BTC);
+  }
 
   const updateValue = (rate) => {
     const newCoins = rate.div(100000000); // works only for BTC atm
@@ -28,6 +33,7 @@ const walletReducer = (state = initialState, action) => {
     case actionTypes.ACTIVE_MINING:
       return { 
         ...state, 
+        gains: updateGains(state.activeRate),
         value: updateValue(state.activeRate),
         coins: {
           ...state.coins,
@@ -39,6 +45,7 @@ const walletReducer = (state = initialState, action) => {
     case actionTypes.PASSIVE_MINING:
       return {
         ...state,
+        gains: updateGains(state.passiveRate),
         value: updateValue(state.passiveRate),
         coins: {
           ...state.coins,
@@ -50,6 +57,7 @@ const walletReducer = (state = initialState, action) => {
     case actionTypes.ELECTRICITY_BILL:
       return {
         ...state,
+        gains: action.cost.times(-1),
         value: state.value.minus(action.cost),
         coins: { 
           ...state,
@@ -60,6 +68,7 @@ const walletReducer = (state = initialState, action) => {
       }
     case actionTypes.BUY_ITEM:
       return {
+        gains: action.cost.times(-1),
         level: action.level ? action.level : state.level,
         value: state.value.minus(action.price),
         activeRate: state.activeRate.times(action.buffs.active),

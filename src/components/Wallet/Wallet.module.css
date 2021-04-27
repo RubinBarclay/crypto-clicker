@@ -23,9 +23,11 @@
 
 .Wallet h3 {
   font-size: 6rem;
+  margin-bottom: -2.5rem;
 }
 
 .Wallet div {
   display: flex;
+  padding: 1rem;
   font-size: 2rem;
 }
