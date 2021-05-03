@@ -19,6 +19,7 @@ const App = () => {
     setInterval(() => {
       // Passive mining
       dispatch({ type: actionTypes.PASSIVE_MINING });
+      dispatch({ type: actionTypes.REPORT_PROFITS });
 
       // Electicity bill mechanism
       if (billTimer === 10) {

@@ -10,3 +10,5 @@ export const UPDATE_POWER_COST = "UPDATE_POWER_COST";
 export const UPDATE_POWER_STATS = "UPDATE_POWER_STATS";
 
 export const BUY_ITEM = "BUY_ITEM";
+
+export const REPORT_PROFITS = "REPORT_PROFITS";

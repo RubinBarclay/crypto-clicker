@@ -6,11 +6,11 @@ import classes from './Shop.module.css';
 
 const Shop = () => {
 
-  const { value, items } = useSelector(state => ({ value: state.wallet.value, items: state.wallet.items }));
+  const { funds, items } = useSelector(state => ({ funds: state.wallet.funds, items: state.wallet.items }));
   const dispatch = useDispatch();
 
   const activeListings = items.filter(listing => (
-      listing.price <= value
+      listing.price <= funds
     )).map(listing => {
       return (
         <Listing

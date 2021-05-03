@@ -1,6 +1,5 @@
 let items = [
   { 
-    key: "1", 
     name:"Half smoked cigarette", 
     desc:"The nicotine makes your clicking slightly more efficient", 
     price: 0.25,
@@ -10,7 +9,6 @@ let items = [
     },
   },
   { 
-    key: "2", 
     name:"A whole cigarette", 
     desc:"Yay, more nicotine!", 
     price: 0.50,
@@ -20,7 +18,6 @@ let items = [
     },
   },
   { 
-    key: "3", 
     name:"Strange russian energy drink", 
     desc:"Contains more than just caffiene...", 
     price: 1,
@@ -30,7 +27,6 @@ let items = [
     },
   },
   { 
-    key: "4", 
     name:"Garbage dump GPU", 
     desc:"Sold to you by a homeless guy", 
     price: 4,
@@ -41,7 +37,6 @@ let items = [
     },
   },
   { 
-    key: "5", 
     name:"Early 00's CPU", 
     desc:"It was considered good 20 years ago", 
     price: 6.5,
@@ -52,7 +47,6 @@ let items = [
     },
   },
   { 
-    key: "6", 
     name:"Dell Dimensions 8200", 
     desc:"Old but gold", 
     price: 12,
@@ -64,7 +58,6 @@ let items = [
     level: 2,
   },
   { 
-    key: "7", 
     name:"Second hand GPU upgrade", 
     desc:"Yikes, costs more than your computer", 
     price: 20,
@@ -75,7 +68,6 @@ let items = [
     },
   },
   { 
-    key: "8", 
     name:"Craigslist gaming PC", 
     desc:"God bless craigslist", 
     price: 40,
@@ -87,7 +79,6 @@ let items = [
     level: 3,
   },
   { 
-    key: "9", 
     name:"Last last last gen GPU", 
     desc:"Sold to you by a homeless guy", 
     price: 60,
@@ -98,7 +89,6 @@ let items = [
     },
   },
   { 
-    key: "10", 
     name:"Dual GPUs", 
     desc:"Two is better than one", 
     price: 60,
@@ -109,7 +99,6 @@ let items = [
     },
   },
   { 
-    key: "11", 
     name:"Your cousins gaming PC",
     desc:"He likes you, so he cuts you a neat deal.", 
     price: 200,
@@ -121,7 +110,6 @@ let items = [
     level: 4,
   },
   { 
-    key: "12", 
     name:"Brand new GPU",
     desc:"Straight off the store shelf", 
     price: 650,
@@ -132,7 +120,6 @@ let items = [
     },
   },
   { 
-    key: "13", 
     name:"Dual GPUs",
     desc:"So much power!", 
     price: 650,
@@ -143,7 +130,6 @@ let items = [
     },
   },
   { 
-    key: "14", 
     name:"Designated Mining Rig",
     desc:"A money printing machine", 
     price: 1600,
@@ -155,5 +141,8 @@ let items = [
     level: 5,
   },
 ]
+
+// Give items index as keys
+items.forEach(item => { item.key = items.indexOf(item) });
 
 export default items;

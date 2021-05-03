@@ -1,22 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import classes from './Notification.module.css';
-// import logos from './logos';
+import { useSelector } from 'react-redux';
 
 const Notification = () => {
-  const gains = useSelector(state => state.wallet.gains);
+  const profits = useSelector(state => state.wallet.totalProfits);
 
-
-
-  const notice = gains ? (
+  return (
     <div className={classes.notification}>
-      {/* <img className={classes.coin} src={logos.BTC} alt="btc" /> */}
-      <p className={gains.gte(0) ? classes.textGreen : classes.textRed}>
-        {gains.gte(0) ? '+$' + gains.toFixed(5) : '-$' + gains.abs().toFixed(5) }
+      <p key={Math.random()} className={profits.gte(0) ? classes.textGreen : classes.textRed}>
+        { profits.gte(0) ? '+$' + profits.toFixed(5) : '-$' + profits.abs().toFixed(5) }
       </p>
-    </div> ) : null;
-
-  return notice;
+    </div> 
+  )
 };
 
 export default Notification;

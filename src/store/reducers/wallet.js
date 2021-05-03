@@ -4,9 +4,10 @@ import items from '../../items';
 
 const initialState = {
   level: 1,
-  gains: null,
-  value: new Big(0),
-  activeRate: new Big(5),
+  totalProfits: new Big(0),
+  newProfits: new Big(0),
+  funds: new Big(0),
+  activeRate: new Big(50),
   passiveRate: new Big(1),
   coins: { BTC: new Big(0) },
   price: {},
@@ -15,8 +16,8 @@ const initialState = {
 
 const walletReducer = (state = initialState, action) => {
 
-  const updateGains = (rate) => {
-    return rate.div(100000000).times(state.price.BTC);
+  const updateProfits = (rate) => {
+    return state.newProfits.plus(rate.div(100000000).times(state.price.BTC));
   }
 
   const updateValue = (rate) => {
@@ -33,8 +34,8 @@ const walletReducer = (state = initialState, action) => {
     case actionTypes.ACTIVE_MINING:
       return { 
         ...state, 
-        gains: updateGains(state.activeRate),
-        value: updateValue(state.activeRate),
+        newProfits: updateProfits(state.activeRate),
+        funds: updateValue(state.activeRate),
         coins: {
           ...state.coins,
           BTC: updateCoin(state.coins.BTC, state.activeRate),
@@ -45,8 +46,8 @@ const walletReducer = (state = initialState, action) => {
     case actionTypes.PASSIVE_MINING:
       return {
         ...state,
-        gains: updateGains(state.passiveRate),
-        value: updateValue(state.passiveRate),
+        newProfits: updateProfits(state.passiveRate),
+        funds: updateValue(state.passiveRate),
         coins: {
           ...state.coins,
           BTC: updateCoin(state.coins.BTC, state.passiveRate),
@@ -57,10 +58,10 @@ const walletReducer = (state = initialState, action) => {
     case actionTypes.ELECTRICITY_BILL:
       return {
         ...state,
-        gains: action.cost.times(-1),
-        value: state.value.minus(action.cost),
+        newProfits: state.newProfits.minus(action.cost),
+        funds: state.funds.minus(action.cost),
         coins: { 
-          ...state,
+          ...state.coins,
           BTC: state.coins.BTC.minus(action.cost.div(state.price.BTC))
         },
         price: { ...state.price },
@@ -68,9 +69,10 @@ const walletReducer = (state = initialState, action) => {
       }
     case actionTypes.BUY_ITEM:
       return {
-        gains: action.cost.times(-1),
+        ...state,
+        newProfits: state.newProfits.minus(action.price),
         level: action.level ? action.level : state.level,
-        value: state.value.minus(action.price),
+        funds: state.funds.minus(action.price),
         activeRate: state.activeRate.times(action.buffs.active),
         passiveRate: state.passiveRate.times(action.buffs.passive),
         coins: { 
@@ -79,6 +81,15 @@ const walletReducer = (state = initialState, action) => {
         },
         price: { ...state.price },
         items: state.items.filter(item => item.key !== action.key)
+      }
+    case actionTypes.REPORT_PROFITS:
+      return {
+        ...state, 
+        totalProfits: state.newProfits,
+        newProfits: new Big(0), 
+        coins: { ...state.coins },
+        price: { ...state.price },
+        items: [ ...state.items ]
       }
     case actionTypes.FETCH_LISTINGS_SUCCESS:
       return { 

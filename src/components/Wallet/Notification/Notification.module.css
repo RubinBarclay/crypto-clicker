@@ -13,9 +13,25 @@
 .textGreen {
   font-size: 2.2rem;
   color: #00b061;
+
+  animation: slideUp 0.25s ease-in;
 }
 
 .textRed {
   font-size: 2.2rem;
   color: #ff3031;
+
+  animation: slideDown 0.2s ease-in;
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(0%) }
+  40% { transform: translateY(-6%) }
+  100% { transform: translateY(0%) }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(0%) }
+  40% { transform: translateY(12%) }
+  100% { transform: translateY(0%) }
 }
