@@ -11,7 +11,7 @@ import './App.css';
 const App = () => {
 
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(fetchListings());
 
@@ -19,6 +19,8 @@ const App = () => {
     setInterval(() => {
       // Passive mining
       dispatch({ type: actionTypes.PASSIVE_MINING });
+
+      // Sets value for notification
       dispatch({ type: actionTypes.REPORT_PROFITS });
 
       // Electicity bill mechanism

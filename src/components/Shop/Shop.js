@@ -6,11 +6,16 @@ import classes from './Shop.module.css';
 
 const Shop = () => {
 
-  const { funds, items } = useSelector(state => ({ funds: state.wallet.funds, items: state.wallet.items }));
+  const { level, funds, items } = useSelector(state => ({ 
+    level: state.wallet.level, 
+    funds: state.wallet.funds, 
+    items: state.wallet.items 
+  })); 
+
   const dispatch = useDispatch();
 
   const activeListings = items.filter(listing => (
-      listing.price <= funds
+    listing.price <= funds && listing.levelReq <= level
     )).map(listing => {
       return (
         <Listing
@@ -19,8 +24,8 @@ const Shop = () => {
           desc={listing.desc}
           price={listing.price}
           purchase={() => {
-            dispatch({ type: actionTypes.BUY_ITEM, key: listing.key, price: listing.price, buffs: listing.buffs, level: listing.level }) 
-            dispatch({ type: actionTypes.UPDATE_POWER_STATS, rate: listing.rate, watts: listing.watts }) 
+            dispatch({ type: actionTypes.BUY_ITEM, key: listing.key, price: listing.price, buffs: listing.buffs, level: listing.levelUp }) 
+            dispatch({ type: actionTypes.UPDATE_POWER, rate: listing.rate, watts: listing.watts }) 
           }}
           />
         )

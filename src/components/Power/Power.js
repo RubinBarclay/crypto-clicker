@@ -13,7 +13,7 @@ const Power = () => {
     <div className={classes.Power}>
       <h2>Power</h2>
       <h3>${cost.toFixed(3)}/kwh</h3>
-      <span>Electricity rate: {rate}/kWh</span>
+      <span>Electricity rate: ${rate}/kWh</span>
       <span>Consumption: {watts}W</span>
     </div>
   )

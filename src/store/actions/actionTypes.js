@@ -6,8 +6,7 @@ export const ACTIVE_MINING = "ACTIVE_MINING";
 export const PASSIVE_MINING = "PASSIVE_MINING";
 
 export const ELECTRICITY_BILL = "ELECTRICITY_BILL";
-export const UPDATE_POWER_COST = "UPDATE_POWER_COST";
-export const UPDATE_POWER_STATS = "UPDATE_POWER_STATS";
+export const UPDATE_POWER = "UPDATE_POWER";
 
 export const BUY_ITEM = "BUY_ITEM";
 
