@@ -7,8 +7,8 @@ const initialState = {
   totalProfits: new Big(0),
   newProfits: new Big(0),
   funds: new Big(0),
-  activeRate: new Big(500),
-  passiveRate: new Big(100),
+  activeRate: new Big(10),
+  passiveRate: new Big(2.5),
   coins: { BTC: new Big(0) },
   price: {},
   items: [ ...items ]
