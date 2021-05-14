@@ -1,7 +1,8 @@
 import * as actionTypes from './actionTypes';
 
 export const fetchListings = () => dispatch => {
-  const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Clitecoin%2Cbitcoin-cash%2Cdogecoin%2Ccardano%2Cmonero&vs_currencies=usd';
+  const url = ''; // I'm delibrately failing the api request, recent volatile prices makes the game very unbalanced
+  // const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Clitecoin%2Cbitcoin-cash%2Cdogecoin%2Ccardano%2Cmonero&vs_currencies=usd';
   fetch(url)
     .then(res => res.json())
     .then(data => {

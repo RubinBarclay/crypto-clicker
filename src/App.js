@@ -3,6 +3,7 @@ import MiningRig from './components/MiningRig/MiningRig';
 import Power from './components/Power/Power';
 import Shop from './components/Shop/Shop';
 import Wallet from './components/Wallet/Wallet';
+import Tabmenu from './components/Tabmenu/Tabmenu';
 import { useDispatch } from 'react-redux';
 import { fetchListings, electricityBill } from './store/actions/actionCreators';
 import * as actionTypes from './store/actions/actionTypes';
@@ -39,6 +40,7 @@ const App = () => {
       <Power />
       <Wallet />
       <Shop />
+      <Tabmenu />
     </div>
   );
 }

@@ -1,0 +1,131 @@
+.Tabmenu {
+  position: relative;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  grid-row: 4 / 6;
+  grid-column: 1 / 4;
+}
+
+.Tabmenu > ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  border: 1px solid black;
+  list-style: none;
+
+  font-size: 1.8rem;
+  position: absolute;
+  top: 0;
+  left: 2%;
+  transform: translateY(-55%);
+  background-color: #fff;
+  padding: 0 1rem;
+}
+
+.Tabmenu > ul li {
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+}
+
+.Tabmenu > ul span {
+  font-size: 1.4rem;
+  border: 1px solid black;
+  border-radius: 100px;
+  padding: 0.2rem 1rem;
+
+  background-color: #f6f5f4;
+  margin-left: 0.8rem;
+}
+
+.hide { display: none }
+
+/* ------ Wallet ------ */
+.Wallet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  grid-row: 4 / 6;
+  grid-column: 2 / 3;
+}
+
+.Wallet h2 {
+  display: none;
+}
+
+.Wallet h3 {
+  font-size: 6rem;
+  margin-bottom: -2.4rem;
+}
+
+.Wallet div {
+  display: flex;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+/* ------ Power ------ */
+.Power {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  grid-row: 4 / 6;
+  grid-column: 1 / 2;
+}
+
+.Power h2 {
+  display: none;
+}
+
+.Power h3 {
+  font-size: 6rem;
+}
+
+.Power span {
+  font-size: 3rem;
+}
+
+/* ------ Shop ------ */
+.Shop {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 2rem;
+  height: 90%;
+  width: 80%;
+
+  grid-row: 4 / 6;
+  grid-column: 3 / 4;
+}
+
+.Shop h2 {
+  display: none;
+}
+
+.Shop div {
+  overflow: auto;
+}
+
+.Shop > div > * {
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .Shop { width: 100% }
+}
+
+@media screen and (max-width: 500px) {
+  .Shop { padding: 1rem }
+}

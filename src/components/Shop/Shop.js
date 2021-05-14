@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 import classes from './Shop.module.css';
 
-const Shop = () => {
+const Shop = ({ tabbed }) => {
 
   const { level, funds, items } = useSelector(state => ({ 
     level: state.wallet.level, 
@@ -32,7 +32,7 @@ const Shop = () => {
       });
 
   return (
-    <div className={classes.Shop}>
+    <div className={tabbed ? tabbed :  `${classes.Shop} desktopOnly`}>
       <h2>Shop</h2>
       <div>{activeListings}</div>
     </div>

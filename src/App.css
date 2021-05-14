@@ -1,9 +1,35 @@
 .App {
   height: 100vh;
-  padding: 2rem;
+  padding: 2rem 12rem;
 
   display: grid;
   grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: 0.2fr repeat(3, 1fr) 0.2fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+.desktopOnly {
+  display: flex;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .App { padding: 2rem }
+}
+
+@media screen and (max-width: 1200px) {
+  .App { padding: 4rem 18rem }
+  .desktopOnly { display: none }
+  .mobileOnly { display: flex }
+}
+
+@media screen and (max-width: 880px) {
+  .App { padding: 4rem }
+}
+
+@media screen and (max-width: 500px) {
+  .App { padding: 1.2rem }
 }

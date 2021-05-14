@@ -111,13 +111,7 @@ const walletReducer = (state = initialState, action) => {
         ...state, 
         coins: { ...state.coins },
         price: { // Backup prices
-          BTC: 65000,
-          ETH: 2500,
-          LTC: 300,
-          DOGE: 0.15,
-          BCH: 800,
-          ADA: 1.5,
-          XMR: 350,
+          BTC: 55000,
         },
         items: [ ...state.items ],
         error: action.payload

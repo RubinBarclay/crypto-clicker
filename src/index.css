@@ -10,6 +10,12 @@ html {
   font-size: 62.5%; /* 1rem = 10px */
 }
 
+@media screen and (max-width: 1400px) {
+  html {
+    font-size: 55%;
+  }
+}
+
 @font-face {
   font-family: "Patrick Hand";
   src: local("Patrick Hand"), url('./assets/fonts/PatrickHand-Regular.ttf');

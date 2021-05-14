@@ -1,12 +1,11 @@
 .MiningRig {
   grid-row: 2 / 3;
-  grid-column: 3 / 4;
-  width: auto;
-  height: 250px;
+  grid-column: 2 / 3;
   justify-self: center;
 }
 
-.coins {
-  height: 2rem;
-  width: 2rem;
+@media screen and (max-width: 600px) {
+  .MiningRig {
+    height: 25rem;
+  }
 }
