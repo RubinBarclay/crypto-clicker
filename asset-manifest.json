@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/crypto-clicker/static/css/main.e74ce991.chunk.css",
+    "main.js": "/crypto-clicker/static/js/main.c13888cc.chunk.js",
+    "main.js.map": "/crypto-clicker/static/js/main.c13888cc.chunk.js.map",
+    "runtime-main.js": "/crypto-clicker/static/js/runtime-main.da0dafe5.js",
+    "runtime-main.js.map": "/crypto-clicker/static/js/runtime-main.da0dafe5.js.map",
+    "static/js/2.d7a941db.chunk.js": "/crypto-clicker/static/js/2.d7a941db.chunk.js",
+    "static/js/2.d7a941db.chunk.js.map": "/crypto-clicker/static/js/2.d7a941db.chunk.js.map",
+    "index.html": "/crypto-clicker/index.html",
+    "static/css/main.e74ce991.chunk.css.map": "/crypto-clicker/static/css/main.e74ce991.chunk.css.map",
+    "static/js/2.d7a941db.chunk.js.LICENSE.txt": "/crypto-clicker/static/js/2.d7a941db.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/crypto-clicker/static/media/PatrickHand-Regular.17a73bce.ttf",
+    "static/media/level1.d501f2d3.png": "/crypto-clicker/static/media/level1.d501f2d3.png",
+    "static/media/level10.28485a30.png": "/crypto-clicker/static/media/level10.28485a30.png",
+    "static/media/level2.9943a6dc.png": "/crypto-clicker/static/media/level2.9943a6dc.png",
+    "static/media/level3.51313127.png": "/crypto-clicker/static/media/level3.51313127.png",
+    "static/media/level4.5f641664.png": "/crypto-clicker/static/media/level4.5f641664.png",
+    "static/media/level5.6bcf57b5.png": "/crypto-clicker/static/media/level5.6bcf57b5.png",
+    "static/media/level6.fa127f67.png": "/crypto-clicker/static/media/level6.fa127f67.png",
+    "static/media/level7.1120362b.png": "/crypto-clicker/static/media/level7.1120362b.png",
+    "static/media/level8.eefed00d.png": "/crypto-clicker/static/media/level8.eefed00d.png",
+    "static/media/level9.e281634d.png": "/crypto-clicker/static/media/level9.e281634d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.da0dafe5.js",
+    "static/js/2.d7a941db.chunk.js",
+    "static/css/main.e74ce991.chunk.css",
+    "static/js/main.c13888cc.chunk.js"
+  ]
+}
